@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- first of all, stop looking around >:(
+    second this uses jcubic/jquery.terminal
+    third this uses a part of cakenggt/hyperatompunk
+  -->
+
+  <title>baito's cmd</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<div class="refresh"></div>
+<body class="crt">
+  <div id="terminal"></div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+  <script>
+    $(function() {
+      const terminal = $('#terminal');
+
+      terminal.terminal({
+        help() {
+          this.echo('-/ help - does exactly what you think!\n-/ qotd - quote of the day (most of the time a puzzle)\n-/ roblox - rawblocks profile\n-/ youtube - youtube profile\n-/ nothing - does nothing\n');
+        },
+        qotd() {
+          this.echo('   https://voca.ro/1b203GvvMPnA');
+        },
+        roblox() {
+          this.echo('   https://www.roblox.com/users/159986661/profile');
+        },
+        youtube() {
+          this.echo('   https://www.youtube.com/channel/UCtsBGbVvFTUJ_8c3qdVHQGQ');
+        },
+        nothing() {
+          this.echo('   it proceeds to do nothing!');
+        }
+      }, {
+        greetings: "baito's cmd\npowered by jcubic/jquery.terminal\nalso uses a part of cakenggt/hyperatompunk\nwork in progress\nuse help for commands\n"
+      });
+    });
+  </script>
+</body>
+</html>

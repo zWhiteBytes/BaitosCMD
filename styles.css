@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css?family=VT323");
+
+body {
+  background-color: #000d00;
+  zoom: 2.75;
+}
+
+.cmd div,
+.cmd span[data-text]:not(.cmd-inverted):not(.token):not(.emoji),
+.terminal,
+.terminal-wrapper,
+.terminal-output>:not(.raw) a,
+.terminal-output>:not(.raw) div,
+.terminal-output>:not(.raw) span[data-text]:not(.token):not(.inverted):not(.terminal-inverted):not(.cmd-inverted):not(.terminal-error):not(.emoji),
+.terminal.external [data-text] {
+  font-family: "VT323", monospace;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #0f0;
+  text-shadow: 1px 0 16px;
+}
+
+.refresh {
+  position: fixed;
+  float: left;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0, rgba(255, 255, 255, 0.4) 10%, rgba(0, 0, 0, 0.1) 100%);
+  opacity: 0.1;
+  bottom: 0;
+  animation: refresh 8s linear infinite;
+}
+
+@keyframes refresh {
+  0% {
+    bottom: 100%;
+  }
+
+  70% {
+    bottom: 100%;
+  }
+
+  100% {
+    bottom: -100%;
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.28;
+  }
+  5% {
+    opacity: 0.35;
+  }
+  10% {
+    opacity: 0.24;
+  }
+  15% {
+    opacity: 0.91;
+  }
+  20% {
+    opacity: 0.18;
+  }
+  25% {
+    opacity: 0.84;
+  }
+  30% {
+    opacity: 0.66;
+  }
+  35% {
+    opacity: 0.68;
+  }
+  40% {
+    opacity: 0.27;
+  }
+  45% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.96;
+  }
+  55% {
+    opacity: 0.09;
+  }
+  60% {
+    opacity: 0.2;
+  }
+  65% {
+    opacity: 0.72;
+  }
+  70% {
+    opacity: 0.53;
+  }
+  75% {
+    opacity: 0.37;
+  }
+  80% {
+    opacity: 0.71;
+  }
+  85% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  95% {
+    opacity: 0.36;
+  }
+  100% {
+    opacity: 0.24;
+  }
+}
+
+.crt::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 1%, rgba(0, 0, 0, 0.25) 50%);
+  z-index: 3;
+  background-size: 100% 4px, 5px 100%;
+  pointer-events: none;
+}
+
+.crt::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 3;
+  pointer-events: none;
+  animation: flicker 0.63s infinite;
+}
