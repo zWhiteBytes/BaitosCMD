@@ -7,25 +7,29 @@
   -->
 
   <title>baito's cmd</title>
+  <link rel="icon" type="image/png" href="assets/baito-icon.ico">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<div class="refresh"></div>
-<body class="crt">
+<body>
+  <div id="bezel"></div>
   <div id="terminal"></div>
+  <div id="crt"></div>
+  <div id="refresh"></div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
   <script>
     $(function() {
       const terminal = $('#terminal');
+      const explosion = new Audio("assets/explosion.mp3");
 
       terminal.terminal({
         help() {
-          this.echo('-/ help - does exactly what you think!\n-/ qotd - quote of the day (most of the time a puzzle)\n-/ roblox - rawblocks profile\n-/ youtube - youtube profile\n-/ nothing - does nothing\n');
+          this.echo('-/ help - does exactly what you think!\n-/ sotd - my status of the day (most times under ciphers)\n-/ roblox - rawblocks profile\n-/ youtube - youtube profile\n-/ nothing - does nothing\n');
         },
-        qotd() {
-          this.echo('   https://voca.ro/1h0FqIscxjcE');
+        sotd() {
+          this.echo('   https://privatebin.net/?ede157092e208ace#51ZhzWWExiqv4364ibmFxehtpTtffZZ2yDe7JxZqLq61');
         },
         roblox() {
           this.echo('   https://www.roblox.com/users/159986661/profile');
@@ -34,10 +38,11 @@
           this.echo('   https://www.youtube.com/channel/UCtsBGbVvFTUJ_8c3qdVHQGQ');
         },
         nothing() {
+          explosion.play();
           this.echo('   it proceeds to do nothing!');
         }
       }, {
-        greetings: "baito's cmd\npowered by jcubic/jquery.terminal\nalso uses a part of cakenggt/hyperatompunk\nwork in progress\nuse help for commands\n"
+        greetings: "baito's cmd\npowered by jcubic/jquery.terminal\nalso uses a part of cakenggt/hyperatompunk\nuse help for commands\n"
       });
     });
   </script>

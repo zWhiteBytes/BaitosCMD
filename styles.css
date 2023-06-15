@@ -3,32 +3,90 @@
 body {
   background-color: #000d00;
   zoom: 2.75;
+  margin: 0;
+  overflow: hidden;
+}
+
+html, body, #terminal {
+  height: 100%;
+  width: 100%;
+}
+
+#terminal {
+  position: relative;
+  left: 20px;
+  top: 10px;
+  transform: translateX(0);
+}
+
+#bezel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/bezel.png');
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+#crt::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 1%, rgba(0, 0, 0, 0.25) 50%);
+  z-index: 3;
+  background-size: 100% 4px, 5px 100%;
+  pointer-events: none;
+}
+
+#crt::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 3;
+  pointer-events: none;
+  animation: flicker 0.2s infinite; 
 }
 
 .cmd div,
 .cmd span[data-text]:not(.cmd-inverted):not(.token):not(.emoji),
+.cmd-cursor,
+.cmd-blink,
 .terminal,
 .terminal-wrapper,
 .terminal-output>:not(.raw) a,
 .terminal-output>:not(.raw) div,
 .terminal-output>:not(.raw) span[data-text]:not(.token):not(.inverted):not(.terminal-inverted):not(.cmd-inverted):not(.terminal-error):not(.emoji),
 .terminal.external [data-text] {
-  font-family: "VT323", monospace;
-  text-transform: uppercase;
-  background-color: transparent;
-  color: #0f0;
+  font-family: "VT323", monospace !important;
+  text-transform: uppercase !important;
+  background-color: transparent !important;
+  color: #0f0 !important;
   text-shadow: 1px 0 16px;
 }
 
-.refresh {
+#refresh {
   position: fixed;
   float: left;
   width: 100%;
   height: 100%;
-  z-index: 9;
+  z-index: 4;
   background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0, rgba(255, 255, 255, 0.4) 10%, rgba(0, 0, 0, 0.1) 100%);
   opacity: 0.1;
   bottom: 0;
+  left: 0;
   animation: refresh 8s linear infinite;
 }
 
@@ -110,33 +168,4 @@ body {
   100% {
     opacity: 0.24;
   }
-}
-
-.crt::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 1%, rgba(0, 0, 0, 0.25) 50%);
-  z-index: 3;
-  background-size: 100% 4px, 5px 100%;
-  pointer-events: none;
-}
-
-.crt::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(18, 16, 16, 0.1);
-  opacity: 0;
-  z-index: 3;
-  pointer-events: none;
-  animation: flicker 0.63s infinite;
 }
