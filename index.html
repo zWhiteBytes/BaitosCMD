@@ -24,25 +24,26 @@
       const terminal = $('#terminal');
       const explosion = new Audio("assets/explosion.mp3");
 
-      terminal.terminal({
-        help() {
-          this.echo('-/ help - does exactly what you think!\n-/ sotd - my status of the day (most times under ciphers/codes)\n-/ roblox - rawblocks profile\n-/ youtube - youtube profile\n-/ nothing - does nothing\n');
-        },
-        sotd() {
-          this.echo('   https://privatebin.net/?c4f747fc14f40a8a#Coueqdx1sziq6aM51Mch2gK6Ee9K44cGeVPZEmcnjbN8');
-        },
-        roblox() {
-          this.echo('   https://www.roblox.com/users/159986661/profile');
-        },
-        youtube() {
-          this.echo('   https://www.youtube.com/channel/UCtsBGbVvFTUJ_8c3qdVHQGQ');
-        },
-        nothing() {
+      terminal.terminal(function(command, term) {
+        const lowercaseCommand = command.toLowerCase();
+
+        if (lowercaseCommand === 'help') {
+          term.echo('-/ help - does exactly what you think!\n-/ sotd - my status of the day (most times under ciphers)\n-/ roblox - rawblocks profile\n-/ youtube - youtube profile\n-/ nothing - does nothing\n');
+        } else if (lowercaseCommand === 'sotd') {
+          term.echo('   https://privatebin.net/?dd589d489340eb4d#HXm1rfB5dZnyespne9KhLQa5iwg2rDyjHEvgL6ExGut9');
+        } else if (lowercaseCommand === 'roblox') {
+          term.echo('   https://www.roblox.com/users/159986661/profile');
+        } else if (lowercaseCommand === 'youtube') {
+          term.echo('   https://www.youtube.com/channel/UCtsBGbVvFTUJ_8c3qdVHQGQ');
+        } else if (lowercaseCommand === 'nothing') {
           explosion.play();
-          this.echo('   it proceeds to do nothing!');
+          term.echo('   it proceeds to do nothing!');
+        } else {
+          term.echo(`${command}: Not found`);
         }
       }, {
-        greetings: "baito's cmd\npowered by jcubic/jquery.terminal\nalso uses a part of cakenggt/hyperatompunk\nuse help for commands\n"
+        greetings: "baito's cmd\npowered by jcubic/jquery.terminal\nalso uses a part of cakenggt/hyperatompunk\nuse help for commands\n",
+        prompt: '>> '
       });
     });
   </script>
